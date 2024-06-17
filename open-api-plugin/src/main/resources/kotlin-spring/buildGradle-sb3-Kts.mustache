@@ -1,0 +1,31 @@
+plugins {
+    java
+    `maven-publish`
+    alias(libs.plugins.kotlin.jvm)
+}
+java {
+    java.sourceCompatibility = JavaVersion.VERSION_17
+    withJavadocJar()
+    withSourcesJar()
+}
+
+group = "{{groupId}}"
+version = "{{artifactVersion}}"
+
+dependencies {
+    implementation(libs.bundles.openapi.server)
+    compileOnly(libs.jakarta.servlet.api)
+}
+
+kotlin {
+    jvmToolchain(17)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenKotlin") {
+            from(components["java"])
+        }
+    }
+}
+

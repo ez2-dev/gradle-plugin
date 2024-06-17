@@ -1,0 +1,21 @@
+{
+  "type": "aws_proxy",
+  "uri": {
+    "Fn::Join": [
+      "",
+      [
+        "arn:aws:apigateway:",
+        {
+          "Fn::Sub": "${AWS::Region}"
+        },
+        ":lambda:path/2015-03-31/functions/",
+        {
+          "Fn::ImportValue": "${AppName}ServerLambdaArn"
+        },
+        "/invocations"
+      ]
+    ]
+  },
+  "passthroughBehavior": "when_no_match",
+  "httpMethod": "POST"
+}

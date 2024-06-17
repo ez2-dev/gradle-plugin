@@ -1,0 +1,14 @@
+[versions]
+kotlin = "1.9.23"
+jackson = "2.15.2"
+[libraries]
+jackson-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version.ref = "jackson" }
+jackson-jsr310 = { group = "com.fasterxml.jackson.datatype", name = "jackson-datatype-jsr310", version.ref = "jackson" }
+jackson-databind = { group = "com.fasterxml.jackson.core", name = "jackson-databind", version.ref = "jackson" }
+kotlin-gradle-plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+[bundles]
+jackson-kotlin = ["jackson-kotlin", "jackson-jsr310", "jackson-databind"]
+[plugins]
+gralde-publish = { id = "com.gradle.plugin-publish", version = "1.2.1" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+

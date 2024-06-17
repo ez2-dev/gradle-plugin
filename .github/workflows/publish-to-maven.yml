@@ -1,0 +1,26 @@
+name: Publish package to the Maven Central Repository
+on:
+  release:
+    types: [created]
+  workflow_dispatch:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: 8.8
+      - name: Publish package
+        run: gradle publishAllPublicationsToMavenCentralRepository
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_PORTAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_PORTAL_USERNAME }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.GPG_SIGNING_KEY  }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.GPG_PASSPHRASE }}
