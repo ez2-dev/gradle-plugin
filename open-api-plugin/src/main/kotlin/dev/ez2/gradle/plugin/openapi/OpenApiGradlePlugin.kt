@@ -110,6 +110,7 @@ class OpenApiGradlePlugin : Plugin<Project> {
                     "interfaceOnly" to "true",
                     "documentationProvider" to "none",
                     "useBeanValidation" to "true",
+                    "enumPropertyNaming" to "UPPERCASE",
                     "annotationLibrary" to "none",
                     "skipDefaultInterface" to "true",
                     "useSpringBoot3" to "true",
