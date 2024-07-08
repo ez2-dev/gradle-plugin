@@ -4,6 +4,7 @@ plugins {
     `maven-publish`
     id("com.gradle.plugin-publish") version "1.2.1"
     alias(libs.plugins.kotlin.jvm)
+    id("com.vanniktech.maven.publish") version "0.29.0"
 }
 
 group = "dev.ez2.gradle"
@@ -32,4 +33,3 @@ dependencies {
 kotlin {
     jvmToolchain(17)
 }
-
